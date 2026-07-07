@@ -1,58 +1,241 @@
+# MERNexus
 
-What this is
+## What This Is
 
-MERNexus is a full-stack admin dashboard application built with the MERN stack (MongoDB, Express, React, Node). It provides a complete CRUD interface for managing users, products, and orders with a modern dark-themed React frontend and a REST API backend running on Express and MongoDB.
+**MERNexus** is a full-stack admin dashboard application built with the **MERN** stack (**MongoDB, Express, React, Node.js**). It provides a complete **CRUD** interface for managing **Users, Products, and Orders** through a modern dark-themed React frontend and a REST API backend powered by Express and MongoDB.
 
-Stack
-Language(s): JavaScript (98.5%), CSS, HTML
-Framework / runtime: Node.js + Express 5.2 (backend), React 19 + Vite (frontend)
+---
 
-Notable libraries: Mongoose (data modeling), Tailwind CSS (styling), React Router (navigation), Fetch API (HTTP calls)
+## Tech Stack
 
+### Languages
 
-How it's organized
-Code
+- JavaScript (98.5%)
+- CSS
+- HTML
+
+### Frameworks & Runtime
+
+- Node.js
+- Express 5.2
+- React 19
+- Vite
+
+### Libraries
+
+- Mongoose (MongoDB data modeling)
+- Tailwind CSS (Styling)
+- React Router (Routing)
+- Fetch API (HTTP Requests)
+
+---
+
+## Project Structure
+
+```text
 MERN-project/
-├── backend/                Express + MongoDB REST API
-│   ├── src/
-│   │   ├── config/        MongoDB connection setup
-│   │   ├── controllers/    Request handlers (users, products, orders)
-│   │   ├── model/         Mongoose schemas
-│   │   ├── routes/        API endpoint definitions
-│   │   └── app.js         Express app configuration
-│   ├── server.js          Entry point
-│   └── package.json       Dependencies
 │
-└── frontend/              React + Vite single-page app
+├── backend/
+│   ├── src/
+│   │   ├── config/          # MongoDB connection setup
+│   │   ├── controllers/     # Request handlers
+│   │   │   ├── users
+│   │   │   ├── products
+│   │   │   └── orders
+│   │   ├── model/           # Mongoose schemas
+│   │   ├── routes/          # REST API routes
+│   │   └── app.js           # Express app configuration
+│   │
+│   ├── server.js            # Backend entry point
+│   └── package.json
+│
+└── frontend/
     ├── src/
-    │   ├── components/    Reusable UI (Navbar, AlertMessage, ConfirmModal, etc.)
-    │   ├── pages/        Dashboard sections (Home, Users, Products, Orders)
-    │   ├── services/     API wrappers for backend calls
-    │   └── App.jsx       Main routing
-    ├── public/           Static files
-    ├── vite.config.js    Build configuration
-    └── package.json      Dependencies
+    │   ├── components/      # Reusable UI components
+    │   │   ├── Navbar
+    │   │   ├── AlertMessage
+    │   │   ├── ConfirmModal
+    │   │   └── ...
+    │   │
+    │   ├── pages/           # Dashboard pages
+    │   │   ├── Home
+    │   │   ├── Users
+    │   │   ├── Products
+    │   │   └── Orders
+    │   │
+    │   ├── services/        # API wrappers
+    │   └── App.jsx          # Main routing
+    │
+    ├── public/
+    ├── vite.config.js
+    └── package.json
+```
 
-How it fits together: The frontend boots a single-page dashboard (React + Tailwind) on port 5173 that fetches data from the backend via REST calls to http://localhost:4000. The backend exposes /users, /products, and /orders endpoints, each backed by Mongoose models connected to MongoDB. Requests flow from React components → services layer (API wrappers) → Express controllers → Mongoose models → MongoDB, with populated references for order relationships.
+---
 
+## Architecture
 
+```text
+React Components
+        │
+        ▼
+Service Layer (Fetch API)
+        │
+        ▼
+Express Routes
+        │
+        ▼
+Controllers
+        │
+        ▼
+Mongoose Models
+        │
+        ▼
+MongoDB
+```
 
-How to run it
-Backend setup:
+The frontend runs as a **single-page application** on **port 5173**, communicating with the backend through REST API calls.
 
-bash
+The backend exposes the following endpoints:
+
+- `/users`
+- `/products`
+- `/orders`
+
+Each endpoint is backed by a dedicated **Mongoose model**, with populated references used for order relationships.
+
+---
+
+# Getting Started
+
+## 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd MERN-project
+```
+
+---
+
+## 2. Backend Setup
+
+```bash
 cd backend
 npm install
-# Create a .env file with:
-# PORT=4000
-# MONGODB_URL=your_mongodb_atlas_connection_string
-npm run dev
-Frontend setup (in a new terminal):
+```
 
-bash
+Create a `.env` file inside the **backend** directory:
+
+```env
+PORT=4000
+MONGODB_URL=your_mongodb_atlas_connection_string
+```
+
+Start the backend server:
+
+```bash
+npm run dev
+```
+
+The backend will run at:
+
+```text
+http://localhost:4000
+```
+
+---
+
+## 3. Frontend Setup
+
+Open a new terminal:
+
+```bash
 cd frontend
 npm install
-# Optionally create a .env file with:
-# VITE_API_BASE_URL=http://localhost:4000
+```
+
+(Optional) Create a `.env` file inside **frontend**:
+
+```env
+VITE_API_BASE_URL=http://localhost:4000
+```
+
+Start the frontend:
+
+```bash
 npm run dev
-The backend server listens on port 4000; the frontend Vite dev server starts on port 5173 (or the next available port).
+```
+
+The frontend will run at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/users` | Get all users |
+| POST | `/users` | Create a user |
+| PUT | `/users/:id` | Update a user |
+| DELETE | `/users/:id` | Delete a user |
+| GET | `/products` | Get all products |
+| POST | `/products` | Create a product |
+| PUT | `/products/:id` | Update a product |
+| DELETE | `/products/:id` | Delete a product |
+| GET | `/orders` | Get all orders |
+| POST | `/orders` | Create an order |
+| PUT | `/orders/:id` | Update an order |
+| DELETE | `/orders/:id` | Delete an order |
+
+---
+
+## Features
+
+- Full CRUD operations
+- RESTful API architecture
+- React 19 + Vite frontend
+- Express.js backend
+- MongoDB with Mongoose
+- Tailwind CSS UI
+- React Router navigation
+- Modular project structure
+- Dark-themed admin dashboard
+- API service layer abstraction
+- Order relationships using Mongoose population
+
+---
+
+## Default Ports
+
+| Service | Port |
+|---------|------|
+| Backend | **4000** |
+| Frontend | **5173** |
+
+---
+
+## Data Flow
+
+```text
+React UI
+   │
+   ▼
+API Services
+   │
+   ▼
+Express Routes
+   │
+   ▼
+Controllers
+   │
+   ▼
+Mongoose Models
+   │
+   ▼
+MongoDB
+```
+````
