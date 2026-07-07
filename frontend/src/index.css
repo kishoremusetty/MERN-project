@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  /* New high-contrast palette */
+  --bg: #fff8f0; /* warm light background */
+  --text: #0b1220; /* very dark navy text */
+  --primary: #06b6d4; /* bright teal accent */
+  --secondary: #ff4d6d; /* vivid coral-pink contrast */
+  --muted: #f1f5f9;
+  --button-text: #ffffff;
+
+  color: var(--text);
+  background-color: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(6,182,212,0.06), transparent 35%), var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Override a few commonly used Tailwind utility classes to match the new palette */
+.bg-slate-950,
+.bg-slate-900,
+.bg-slate-800 {
+  background-color: var(--primary) !important;
+}
+
+.bg-sky-500 {
+  background-color: var(--secondary) !important;
+}
+
+.text-sky-400 {
+  color: var(--secondary) !important;
+}
+
+.text-white {
+  color: var(--button-text) !important;
+}
+
+.text-slate-300 {
+  color: rgba(11,18,32,0.75) !important;
+}
+
+.border-slate-800 {
+  border-color: color-mix(in srgb, var(--primary) 60%, var(--secondary) 40%) !important;
+}
+
+nav {
+  background: var(--primary) !important;
+  color: var(--button-text) !important;
+}
+
+button {
+  background: var(--secondary) !important;
+  color: var(--button-text) !important;
+}
+
+button:hover {
+  filter: brightness(0.95);
+}
