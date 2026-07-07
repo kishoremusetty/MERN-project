@@ -1,11 +1,15 @@
 
 What this is
+
 MERNexus is a full-stack admin dashboard application built with the MERN stack (MongoDB, Express, React, Node). It provides a complete CRUD interface for managing users, products, and orders with a modern dark-themed React frontend and a REST API backend running on Express and MongoDB.
 
 Stack
 Language(s): JavaScript (98.5%), CSS, HTML
 Framework / runtime: Node.js + Express 5.2 (backend), React 19 + Vite (frontend)
+
 Notable libraries: Mongoose (data modeling), Tailwind CSS (styling), React Router (navigation), Fetch API (HTTP calls)
+
+
 How it's organized
 Code
 MERN-project/
@@ -28,7 +32,10 @@ MERN-project/
     ├── public/           Static files
     ├── vite.config.js    Build configuration
     └── package.json      Dependencies
+
 How it fits together: The frontend boots a single-page dashboard (React + Tailwind) on port 5173 that fetches data from the backend via REST calls to http://localhost:4000. The backend exposes /users, /products, and /orders endpoints, each backed by Mongoose models connected to MongoDB. Requests flow from React components → services layer (API wrappers) → Express controllers → Mongoose models → MongoDB, with populated references for order relationships.
+
+
 
 How to run it
 Backend setup:
